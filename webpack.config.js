@@ -6,6 +6,8 @@ if (!Encore.isRuntimeEnvironmentConfigured()) {
     Encore.configureRuntimeEnvironment(process.env.NODE_ENV || 'dev');
 }
 
+
+
 Encore
     // directory where compiled assets will be stored
     .setOutputPath('public/build/')
@@ -58,6 +60,11 @@ Encore
 
     // enables Sass/SCSS support
     .enableSassLoader()
+
+    .copyFiles({
+        from: './assets/images',
+        to: 'images/[path][name].[hash:8].[ext]'
+    })
 ;
 
 module.exports = Encore.getWebpackConfig();
